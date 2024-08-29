@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.step-desc {
+  font-size: 20px;
+  line-height: 24px;
+  color: $color-charcoal;
+  margin: 0;
+  padding: 0;
+
+  @include vp-767 {
+    font-size: 13px;
+    line-height: 22px;
+  }
+
+  br {
+    display: none;
+
+    @include vp-1023 {
+      display: block;
+    }
+  }
+}

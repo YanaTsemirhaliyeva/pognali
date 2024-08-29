@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.filter-parameter {
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    &__button {
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        transition: border-color $trans-default, background-color $trans-default;
+
+        &-svg {
+            width: 10px;
+            
+            &--up {
+                transform: rotate(180deg);
+            }
+        }
+
+        span {
+            font-family: $ff-roboto;
+            font-size: 20px;
+            line-height: 22px;
+            font-weight: 500;
+            color: $color-catalina-blue;
+            text-transform: uppercase;
+        }
+
+        @include hover {
+            opacity: 0.8;
+            outline: none;
+        }
+
+        @include focus {
+            opacity: 0.6;
+            outline: none;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        margin-bottom: 32px;
+        padding: 1px 0 0 1px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+
+        @include vp-1023 {
+            margin-bottom: 0;
+            display: grid;
+            gap: 8px;
+            grid-template-columns: 161px 165px 169px;
+        }
+
+        @include vp-767 {
+            padding: 2px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        &--svg {
+            display: flex;
+            flex-direction: row;
+            gap: 1px;
+
+            @include vp-767 {
+                padding: 6px 0 20px;
+            }
+        }
+    }
+}

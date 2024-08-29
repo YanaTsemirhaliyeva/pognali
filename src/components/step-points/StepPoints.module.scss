@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.step {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include vp-767 {
+    gap: 22px;
+    margin-right: 20px;
+  }
+
+  &__item {
+    position: relative;
+    opacity: 0.3;
+    font-size: 23px;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: $color-catalina-blue;
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include vp-767 {
+      width: 5px;
+      height: 5px;
+    }
+  }
+}

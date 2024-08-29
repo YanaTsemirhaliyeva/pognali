@@ -1,0 +1,95 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.likes__check {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+}
+
+.likes__img {
+  box-sizing: border-box;
+  width: 31px;
+  height: 31px;
+  margin-right: 6%;
+  border-radius: 50%;
+  border: 0;
+  padding-top: 8px;
+  padding-left: 5px;
+
+  @media (min-width: $vp-768) {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    margin-top: -5px;
+    padding-top: 20px;
+    padding-left: 16px;
+  }
+}
+
+.likes__check:checked~.likes__img {
+  background-color: #f9eaea;
+}
+
+.likes__check:checked~.likes__img .likes__icon-no-active {
+  display: none;
+}
+
+.likes__check~.likes__img .likes__icon-no-active {
+  display: block;
+  stroke: #b7bbc9;
+}
+
+.likes__check~.likes__img:hover {
+  background-color: #e2e5f2;
+}
+
+.likes__check:checked~.likes__img:hover {
+  background-color: #f9d8d8;
+}
+
+.likes__check:checked~.likes__img .likes__icon-active {
+  display: block;
+  fill: red;
+}
+
+.likes__check~.likes__img .likes__icon-active {
+  display: none;
+  fill: red;
+}
+
+.likes__icon-active, .likes__icon-no-active {
+  width: 20px;
+  height: 17px;
+}
+
+.likes__value {
+  margin: 0;
+  padding: 5px 0 0;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 21px;
+  color: #161c35;
+
+  @media (min-width: $vp-768) {
+    margin-left: 4.9%;
+    padding-top: 7px;
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  @media (min-width: $vp-1440) {
+    padding-top: 13px;
+  }
+}
+
+.likes__value--demin {
+  @media (min-width: $vp-768) {
+    padding-top: 13px;
+  }
+}

@@ -1,0 +1,244 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.select-country-btns {
+    position: relative;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: minmax(320px, 730px) 70px 29px;
+    column-gap: 80px;
+
+    @include vp-1023 {
+        grid-template-columns: minmax(369px, 730px) 70px 19px;
+        column-gap: 23px;
+    }
+
+    @include vp-767 {
+        grid-template-columns: minmax(168px, 730px) 54px;
+        column-gap: 0;
+    }
+
+    &__button {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 23px;
+        width: 92%;
+        font-size: 20px;
+        line-height: 20px;
+        font-weight: 500;
+        color: $color-catalina-blue;
+        text-transform: uppercase;
+        background-color: $color-default-white;
+        border: 1px solid $color-link-water;
+        border-radius: 1px;
+        position: relative;
+        transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+
+        @include hover-focus {
+            border: 1px solid $color-rock-blue;
+            outline: none;
+
+            .select-country-btns__icon--arrow {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    &__icon {
+        width: 23px;
+        height: 24px;
+        transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+
+        &--delete {
+            transform: translateX(7px);
+            stroke: $color-default-black;
+            opacity: 0.1;
+
+            @include hover-focus {
+                opacity: 0.3;
+            }
+
+            @include active {
+                opacity: 0.05;
+            }
+
+            @include vp-1023 {
+                transform: translateX(1px);
+                width: 22px;
+                height: 24px;
+
+                & svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            @include vp-767 {
+                transform: translate(6px, -3px);
+                stroke: $color-mischka;
+                opacity: 1;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        &--arrow {
+            transform: translate(-3px, 4px);
+        }
+
+        &--close {
+            display: none;
+        }
+    }
+
+    &__flag {
+        @include vp-1023 {
+            margin-right: 22px;
+        }
+
+        @include vp-767 {
+            margin: 0;
+            width: 53px;
+            height: 42px;
+            border: 1px solid $color-link-water;
+            border-radius: 4px;
+        }
+    }
+
+    &__flag-wrapper {
+        display: flex;
+        width: 70px;
+        height: 47px;
+
+        img {
+            border-radius: 8px;
+        }
+
+        @include vp-767 {
+            margin: 8px auto;
+            width: 35px;
+            height: 24px;
+        }
+    }
+
+    &__delete {
+        padding: 0;
+        background-color: transparent;
+        border: none;
+
+        @include vp-767 {
+            position: absolute;
+            content: "";
+            right: -11px;
+            top: -10px;
+            width: 21px;
+            height: 21px;
+            background-color: $color-solitude-3;
+            border-radius: 50%;
+        }
+    }
+
+    &__arrow {
+        display: none;
+
+        @include vp-767 {
+            position: absolute;
+            content: "";
+            display: block;
+            right: 53px;
+            top: 39px;
+            width: 5px;
+            height: 10px;
+        }
+    }
+
+    &[data-name="3"] {
+        .select-country-btns__arrow {
+            @include vp-767 {
+                display: none;
+            } 
+        }
+    }
+
+    &__search {
+        display: none;
+
+        @include vp-1023 {
+            min-width: 575px;
+        }
+
+        @include vp-767 {
+            min-width: 220px;
+        }
+    }
+
+    &.close {
+        .select-country-btns--select {
+            display: none;
+        }
+    }
+
+    &--select {
+        &.opened {
+            @include vp-767 {
+                grid-template-columns: 100%;
+                border: none;
+            }
+
+            .select-country-btns__search {
+                position: absolute;
+                display: block;
+                content: "";
+                top: 72px;
+                z-index: 2;
+
+                @include vp-1023 {
+                    top: 70px;
+                }
+
+                @include vp-767 {
+                    width: 100%;
+                    top: 40px;
+                }
+            }
+
+            .select-country-btns__icon {
+                &--arrow {
+                    display: none;
+                }
+
+                &--close {
+                    width: 22px;
+                    height: 24px;
+                    display: inline-block;
+                    stroke: $color-default-white;
+                    opacity: 0.3;
+
+                        & svg {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                    @include hover {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .select-country-btns__delete {
+                @include vp-767 {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--add {
+        @include vp-767 {
+            grid-template-columns: 1fr;
+        }
+    }
+}

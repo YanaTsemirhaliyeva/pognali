@@ -1,0 +1,151 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+
+    @include vp-1023 {
+        padding: 34px 0 37px;
+        margin-bottom: 6px;
+        gap: 21px;
+        border-top: 1px solid $color-golden-dream;
+        border-bottom: 1px solid $color-golden-dream;
+    }
+
+    @include vp-767 {
+        padding: 0;
+        gap: 0;
+        border: none;
+    }
+
+    &__item {
+        margin: 0;
+        padding: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        @include vp-1023 {
+            flex-direction: row;
+            gap: 0;
+        }
+
+        @include vp-767 {
+            flex-direction: column;
+            border-top: 1px solid $color-golden-dream;
+        }
+    }
+
+    &__button {
+        position: relative;
+        padding: 0;
+        max-width: 190px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        line-height: 22px;
+        font-weight: 500;
+        word-break: break-all;
+        color: $color-catalina-blue;
+        text-transform: uppercase;
+        transition: border-color $trans-default, background-color $trans-default;
+
+        @include vp-767 {
+            max-width: 100%;
+            padding: 12px 0 9px;
+            letter-spacing: -0.6px;
+        }
+
+        &::after {
+            position: absolute;
+            content: "";
+            top: 6px;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-top: 5px solid $color-catalina-blue;
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+            transform-origin: center;
+            transform: none;
+            transition: transform $trans-default;
+
+            @include vp-1023 {
+                display: none;
+            }
+
+            @include vp-767 {
+                display: block;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+        &.active {
+            &::after {
+                transform: rotate(180deg);
+            }
+        }
+
+        span {
+            font-size: 20px;
+            line-height: 22px;
+            font-weight: 500;
+            color: $color-catalina-blue;
+            text-transform: uppercase;
+
+            @include vp-1023 {
+                min-width: 124px;
+                text-align: start;
+                line-height: 20px;
+                letter-spacing: -0.6px;
+            }
+
+            @include vp-767 {
+                min-width: 0;
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+
+        @include hover {
+            opacity: 0.8;
+            outline: none;
+        }
+
+        @include focus {
+            opacity: 0.6;
+            outline: none;
+        }
+    }
+
+    &__content {
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s;
+
+        &.opened {
+            margin-top: auto;
+            height: auto;
+        }
+
+        @include vp-1023 {
+            height: max-content;
+
+            &--margin {
+                margin-top: -10px;
+            }
+        }
+
+        @include vp-767 {
+            &--margin {
+                margin-top: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+// https://github.com/codrops/CreativeLinkEffects/blob/master/css/component.css
+// Effect 5: same word slide in
+
+.link {
+	overflow: hidden;
+}
+
+.link span {
+	position: relative;
+	display: inline-block;
+	-webkit-transition: -webkit-transform $trans-default;
+	-moz-transition: -moz-transform $trans-default;
+	transition: transform $trans-default, color $trans-default, opacity $trans-default;
+}
+
+.link span::before {
+	position: absolute;
+	top: 100%;
+	content: attr(data-hover);
+	font-weight: 700;
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+  white-space: nowrap;
+}
+
+.link {
+  @include hover {
+    span {
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      transform: translateY(-100%);
+    }
+  }
+
+  @include active {
+    span {
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      transform: translateY(-100%);
+      opacity: 0.3;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.step-list {
+  list-style: none;
+  min-width: 230px;
+  max-width: 300px;
+  margin: 0;
+  padding: 0;
+  margin-left: 80px;
+  margin-top: 8px;
+
+  @include vp-1023 {
+    display: none;
+  }
+
+  &__item {
+    position: relative;
+    opacity: 0.6;
+    padding-left: 50px;
+    font-size: 23px;
+
+    &--active {
+      opacity: 1;
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    width: 7.5px;
+    height: 6px;
+    background-color: $color-catalina-blue;
+    border-radius: 50%;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

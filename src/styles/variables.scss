@@ -1,0 +1,152 @@
+// Viewports
+// ---------------------------------
+
+$vp-320: 320px;
+$vp-375: 375px;
+$vp-768: 768px;
+$vp-868: 868px;
+$vp-1024: 1024px;
+$vp-1180: 1180px;
+$vp-1200: 1200px;
+$vp-1280: 1280px;
+$vp-1366: 1366px;
+$vp-1440: 1440px;
+$vp-1920: 1920px;
+
+// Colors
+// ---------------------------------
+
+// Default
+
+$color-default-black:                       #000000;
+$color-default-white:                       #ffffff;
+$color-transparent:                         rgba(255, 255, 255, 0.1);
+$color-transparent-2:                       rgba(255, 255, 255, 0.3);
+$color-transparent-black:                   rgba(0, 0, 0, 0.5);
+$color-transparent-catalina-blue:           rgba(29, 46, 91, 0.15);
+$color-transparent-catalina-blue-2:         rgba(29, 46, 91, 0.2);
+$color-transparent-default-black:           rgba(0, 0, 0, 0.14);
+$color-transparent-tory-blue:               rgba(54, 80, 148, 0.18);
+$color-transparent-default-black-2:         rgba(0, 0, 0, 0.24);
+$color-transparent-hawkes-blue:             rgba(212, 217, 235, 0.25);
+
+
+
+
+
+// Project palette
+// для нейминга цветов используем https://www.htmlcsscolor.com/hex/334482
+
+$color-dodger-blue:                         #0380ea;
+$color-lavender:                            #e8e8e9;
+$color-black-pearl:                         #161c24;
+$color-raven:                               #73777c;
+$color-deep-lilac:                          #8f5db7;
+$color-malachite:                           #25d366;
+$color-summer-sky:                          #39aee9;
+$color-summer-sky-2:                        #339dd2;
+$color-snow:                                #f9f9f9;
+$color-nordic:                              #0c343d;
+$color-bright-grey:                         #4b525c;
+$color-tuna:                                #444a50;
+$color-white-smoke:                         #f6f6f6;
+$color-white-smoke-2:                       #f2f2f2;
+$color-midnight-express:                    #182044;
+$color-midnight-express-2:                  #192144;
+$color-navy-blue:                           #0266bb;
+$color-medium-sea-green:                    #21be5c;
+$color-studio:                              #8154a5;
+$color-whisper:                             #e9e9e9;
+$color-whisper-2:                           #e5e5e5;
+$color-heather:                             #b9bbbd;
+$color-zumthor:                             #d0d2d3;
+$color-link-water:                          #cbced9;
+$color-pale-cornflower-blue:                #aed0eb;
+$color-pale-cornflower-blue-2:              #a8d2f4;
+$color-catalina-blue:                       #1d2e5b;
+$color-charcoal:                            #444444;
+$color-very-light-grey:                     #cccccc;
+$color-solitude:                            #e1e3e9;
+$color-solitude-2:                          #e2e5f1;
+$color-solitude-3:                          #edeff6;
+$color-jordy-blue:                          #7ebaeb;
+$color-curious-blue:                        #468ac1;
+$color-picton-blue:                         #4d99d6;
+$color-rock-blue:                           #959bb2;
+$color-outrageous-orange:                   #ff5c23;
+$color-nobel:                               #999999;
+$color-midnight-express-light:              #192144;
+$color-solitude-light:                      #edeff6;
+$color-hawkes-blue:                         #d1d7e9;
+$color-hawkes-blue-2:                       #d6d9e6;
+$color-hawkes-blue-3:                       #d4d9eb;
+$color-hawkes-blue-light:                   #dfe3f0;
+$color-echo-blue:                           #aeb4cb;
+$color-solitude-dark:                       #e2e5f1;
+$color-midnight-express-dark:               #101d41;
+$color-hawkes-blue-dark:                    #d6daed;
+$color-pattens-blue:                        #cce5fa;
+$color-tory-blue:                           #365094;
+$color-mischka:                             #afb0b5;
+$color-periwinkle:                          #c8cee8;
+$color-endeavour:                           #335d8d;
+
+$color-salmon:                              #f97676;
+$color-lavender:                            #e2e5f2;
+$color-remy:                                #f9d8d8;
+$color-tutu:                                #f9eaea;
+$color-midnight-express-more:               #161c35;
+$color-lawn-green:                          #81e31e;
+$color-neon-carrot:                         #ff8d30;
+$color-red-orange:                          #f02323;
+$color-golden-dream:                        #f3c72b;
+$color-echo-blue:                           #b7bbc9;
+$color-red:                                 #ff0000;
+
+// Gradient
+
+$black-to-right: linear-gradient(
+  90deg,
+  rgba(0, 0, 0, 0.75) 0%,
+  rgba(0, 0, 0, 0) 75%
+);
+
+// Typography
+// ---------------------------------
+
+// переменная используемая в html для подключения скейлинга
+$fz-default: 16px;
+
+@function size($size-in-px) {
+  @return calc($size-in-px / $fz-default * 1rem);
+}
+
+// у некоторых шрифтов в ios возникают проблемы с символом рубля
+// https://www.artlebedev.ru/kovodstvo/sections/159/#13
+$ff-rouble: "Rouble", "Arial", sans-serif;
+
+$ff-roboto: "Roboto", "Arial", sans-serif;
+
+// Animation
+// ---------------------------------
+
+$tf-default: ease;
+$trans-default: 0.3s $tf-default;
+
+// если требуется изинг отличный от $tf-default, то переменную называем не цифрой
+$trans-modal: 0.6s cubic-bezier(0.55, 0, 0.1, 1);
+
+$trans-600: 0.6s $tf-default;
+
+// Retina
+// ---------------------------------
+
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+// Indent
+// ---------------------------------
+
+// компенсация подъема футера наверх
+$footer-gap: 55px;
+$footer-gap-mobile: 25px;

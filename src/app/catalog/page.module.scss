@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.catalog {
+  display: flex;
+  gap: 85px;
+
+  @include vp-1023 {
+    flex-direction: column;
+    gap: 40px;
+  }
+}

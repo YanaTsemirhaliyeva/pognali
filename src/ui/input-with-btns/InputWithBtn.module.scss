@@ -1,0 +1,169 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.input {
+  flex-basis: 50%;
+  display: grid;
+  grid-template-columns: 218px 180px 82px;
+  align-items: center;
+  font-weight: 500;
+
+  @include vp-1023 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  &__label {
+    order: 1;
+    line-height: 100%;
+
+    @include vp-1023 {
+      display: flex;
+      width: 50%;
+      order:initial;
+    }
+
+    @include vp-767 {
+      width: 176px;
+      letter-spacing: 1.4px;
+    }
+  }
+
+  &__label-unit {
+    order: 3;
+    margin-left: 35px;
+
+    @include vp-1279 {
+      margin-left: 20px;
+    }
+
+    @include vp-1023 {
+      display: flex;
+      margin-left: auto;
+      order: initial;
+      justify-content: flex-end;
+      opacity: 0.3;
+    }
+  }
+
+  &__input-wrapper {
+    order: 2;
+    position: relative;
+
+    &:hover>.input__input {
+      border-color: $color-rock-blue;
+    }
+
+    &:active>.input__input {
+      border-color: $color-black-pearl;
+    }
+
+    @include vp-1023 {
+      order: initial;
+      width: 100%;
+      margin-top: 24px;
+    }
+
+    @include vp-767 {
+      margin-top: 9px;
+    }
+  }
+
+  &__input {
+    border: 1px solid $color-very-light-grey;
+    border-radius: 4px;
+    padding: 22px 40px;
+    text-align: center;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    line-height: 18px;
+    font-weight: 500;
+    transition: border-color $trans-default;
+
+    @include vp-767 {
+      font-size: 15px;
+      line-height: 15px;
+      padding: 12px 40px;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      /* display: none; <- Crashes Chrome on hover */
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+  }
+
+  &__button {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: none;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    &--less {
+      left: 20px;
+
+      &:hover {
+
+        &::before {
+          background-color: $color-rock-blue;
+        }
+      }
+
+      &:active {
+        &::before {
+          background-color: $color-black-pearl;
+        }
+      }
+    }
+
+    &--more {
+      right: 20px;
+
+      &:hover {
+
+        &::before,
+        &::after {
+          background-color: $color-rock-blue;
+        }
+      }
+
+      &:active {
+        &::before,
+        &::after {
+          background-color: $color-black-pearl;
+        }
+      }
+    }
+
+    &::before,
+    &--more::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      height: 2px;
+      width: 100%;
+      background-color: $color-very-light-grey;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      transition: background-color $trans-default;
+    }
+
+    &--more::after {
+      height: 100%;
+      width: 2px;
+    }
+  }
+}

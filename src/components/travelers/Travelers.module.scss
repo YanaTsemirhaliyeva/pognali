@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.trevelers {
+
+  @include vp-1023 {
+    order: 1;
+  }
+}

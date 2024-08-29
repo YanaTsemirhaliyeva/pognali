@@ -1,0 +1,93 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.route {
+  padding-right: 24px;
+
+  @include vp-1023 {
+    padding-right: 0;
+  }
+
+  &__header {
+    padding: 13px 0 51px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-solitude;
+    max-width: 998px;
+
+    @include vp-1023 {
+      padding: 0 0 32px;
+    }
+
+    @include vp-767 {
+      padding-bottom: 21px;
+      border-bottom: none;
+    }
+  }
+
+  &__text {
+    padding-top: 15px;
+    max-width: 500px;
+
+    @include vp-1023 {
+      padding: 0;
+    }
+  }
+
+  &__content {
+    padding: 62px 0 52px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 221px;
+      width: 1px;
+      height: 100%;
+      background-color: $color-solitude;
+
+      @include vp-1023 {
+        right: 135px;
+      }
+
+      @include vp-767 {
+        display: none;
+      }
+    }
+
+    @include vp-1023 {
+      padding: 42px 0 50px;
+      gap: 15px;
+    }
+
+    @include vp-767 {
+      padding: 0 3px 25px 0;
+      gap: 22px;
+    }
+  }
+
+  &__wrapper-btn {
+    padding-right: 45px;
+    width: 75.7%;
+  }
+
+  &__btn-icon {
+    opacity: 0.2;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: -11px;
+
+    @include vp-767 {
+      margin-right: 0;
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.letter {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: $color-midnight-express-2;
+  margin: 0;
+  margin-bottom: 30px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.item {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: $color-charcoal;
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: block;
+  background-color: transparent;
+  cursor: pointer;
+
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.5;
+  color: $color-charcoal;
+  text-align: left;
+
+  transition: opacity $trans-default;
+
+  @include hover {
+    opacity: 0.7;
+  }
+}

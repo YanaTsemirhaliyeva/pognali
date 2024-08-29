@@ -1,0 +1,305 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.btn-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 23px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+    color: $color-catalina-blue;
+    text-transform: uppercase;
+    background-color: $color-default-white;
+    border: 1px solid $color-link-water;
+    border-radius: 4px;
+    position: relative;
+    transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+
+    @include vp-1023 {
+        padding: 22px 23px 21px;
+        margin-right: 27px;
+    }
+
+    @include vp-767 {
+        margin-right: 0;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: start;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        z-index: 1;
+        top: 50%;
+        right: -52px;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 14px;
+        border: 1px solid $color-link-water;
+        border-radius: 50%;
+        background-color: $color-solitude-3;
+
+        @include vp-1023 {
+            transform: translateY(-10px);
+            right: -35px;
+        }
+
+        @include vp-767 {
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            right: -5px;
+        }
+    }
+
+    &--select {
+        padding: 22px 24px 21px;
+        height: 70px;
+
+        &::after {
+            background-color: $color-default-white;
+        }
+
+        @include vp-1023 {
+            padding: 25px 26px 22px;
+        }
+
+        @include vp-767 {
+            padding: 13px 6px 9px 10px;
+            height: 42px;
+            text-align: start;
+        }
+    }
+
+    @include hover-focus {
+        border: 1px solid $color-rock-blue;
+        outline: none;
+
+        .btn-select__icon--arrow {
+            opacity: 0.3;
+        }
+    }
+
+    &--add {
+        padding: 24px 26px 25px;
+        background-color: $color-solitude-3;
+        border: none;
+        border-radius: 4px;
+        transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+
+        &::after {
+            background-color: $color-solitude-light;
+
+            @include vp-767 {
+                right: 47px;
+            }
+        }
+
+        @include hover-focus {
+            background: $color-hawkes-blue-light;
+            outline: none;
+            border: none;
+
+            .btn-select__icon {
+                opacity: 0.3;
+    
+                @include active {
+                    opacity: 0.1;
+                }
+            }
+        }
+
+        @include active {
+            background: $color-hawkes-blue-light;
+            outline: none;
+            border: none;
+
+            .btn-select__icon {
+                opacity: 0.1;
+            }
+        }
+
+        @include vp-767 {
+            padding: 13px 6px 9px 10px;
+
+            & span {
+                max-width: 190px;
+            }
+        }
+    }
+
+    &__icon {
+        position: relative;
+        width: 23px;
+        height: 24px;
+        transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+        
+        &--arrow {
+            transform: translate(1px, 3px);
+
+            @include vp-1023 {
+                transform: translate(10px, 2px);
+                width: 20px;
+                height: 17px;
+
+               svg {
+                 width: 100%;
+                 height: 100%;
+               }
+            }
+
+            @include vp-767 {
+                position: absolute;
+                content: "";
+                right: -43px;
+                top: 11px;
+                width: 16px;
+                height: 12px;
+                transform: translate(-3px, 4px);
+            }
+        }
+
+        &--close {
+            display: none;
+
+            @include vp-1023 {
+                width: 22px;
+                height: 21px;
+            }
+        }
+
+        &--add {
+            transform: translate(2px, 2px);
+            opacity: 0.2;
+
+            @include vp-767 {
+                right: 8px;
+                top: 0;
+                width: 16px;
+                height: 12px;
+
+                & svg {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    &--select {
+        &.opened {
+            padding: 22px 13px 21px;
+            color: $color-default-white;
+            background-color: $color-catalina-blue;
+            border: 1px solid $color-catalina-blue;
+
+            span {
+                letter-spacing: 1.3px;
+            }
+
+            @include vp-1023 {
+                padding: 21px 13px 20px;
+                border: none;
+            }
+
+            @include vp-767 {
+                padding: 13px 6px 9px 16px;
+                border: 1px solid $color-catalina-blue;
+            }
+
+            &::after {
+                @include vp-767 {
+                    display: none;
+                }
+            }
+
+            @include hover {
+                .btn-select__icon--close {
+                    opacity: 1;
+                }
+            }
+
+            @include active {
+                .btn-select__icon--close {
+                    opacity: 0.1;
+                }
+            }
+
+            .btn-select__icon {
+                &--arrow {
+                    display: none;
+                }
+        
+                &--close {
+                    width: 22px;
+                    height: 24px;
+                    display: inline-block;
+                    transform: translate(-3px, 4px);
+                    stroke: $color-default-white;
+                    opacity: 0.3;
+
+                    @include vp-1023 {
+                        transform: translate(1px, 4px);
+                    }
+
+                    & svg {
+                        width: 100%;
+                        height: 100%;
+                    }
+    
+                    @include hover {
+                        opacity: 1;
+                    }
+
+                    @include vp-767 {
+                        transform: translate(-3px, 4px);
+                        width: 11px;
+                        height: 11px;
+                        top: -4px;
+                        right: 4px;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &[data-country-chose="true"] {
+            padding-right: 35px;
+
+            span {
+                white-space: nowrap;
+                overflow: hidden;
+                letter-spacing: 1.3px;
+
+                @include vp-1023 {
+                    letter-spacing: 0.6px;
+                }
+            }
+
+            &::after {
+                background-color: $color-catalina-blue;
+            }
+
+            .btn-select__icon--close {
+                transform: translate(23px, 4px);
+            }
+
+            .btn-select__icon--arrow {
+                transform: translate(11px, 4px);
+
+                @include vp-1023 {
+                    // transform: translate(23px, 4px);
+                }
+
+                @include vp-767 {
+                    transform: translate(-1px, 5px);
+                    right: 10px;
+                }
+            }
+        }
+    }
+}

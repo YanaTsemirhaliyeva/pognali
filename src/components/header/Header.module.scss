@@ -1,0 +1,358 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.header {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: $color-midnight-express-2;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 60px 60px;
+
+  @include vp-1023 {
+    padding-top: 46px;
+    padding-bottom: 46px;
+
+    &.is-open {
+      .nav__wrapper {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+        pointer-events: all;
+      }
+    }
+  }
+
+  @include vp-767 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 0 0 20px 20px;
+
+    &.is-open {
+      .logo-mobile {
+        svg {
+          fill: $color-midnight-express-2
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  top: 0;
+  background-color: $color-midnight-express-2;
+
+  @include vp-1023 {
+    height: 142px;
+  }
+
+  @include vp-767 {
+    height: 57px;
+  }
+}
+
+.logo {
+  @include vp-767 {
+    display: none;
+  }
+}
+
+.logo-mobile {
+  display: none;
+
+  @include vp-767 {
+    display: block;
+
+    svg {
+      display: block;
+      fill: $color-default-white;
+      transition: fill $trans-default;
+    }
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__wrapper {
+    flex-grow: 1;
+
+    display: flex;
+    align-items: center;
+
+    @include vp-1023 {
+      align-items: flex-start;
+      padding: 0 25px;
+      overflow-y: auto;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      background-color: $color-default-white;
+      transform: translate3d(100%, 0, 0);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform $trans-default, visibility $trans-default;
+    }
+  }
+
+  &__logo {
+    margin-right: 40px;
+    display: block;
+
+    @include vp-1023 {
+      width: 166px;
+      z-index: 1000;
+    }
+  }
+
+  &__line {
+    width: 60px;
+    height: 2px;
+    background-color: $color-default-white;
+    margin-right: 45px;
+
+    @include vp-1023 {
+      display: none;
+    }
+  }
+
+  &__list {
+    composes: list;
+    display: flex;
+    column-gap: 18px;
+    flex-wrap: wrap;
+
+    @include vp-1023 {
+      flex-direction: column;
+      padding-top: 150px;
+    }
+
+    @include vp-767 {
+      padding-top: 100px;
+    }
+  }
+
+  &__list-secondary {
+    composes: list;
+    display: flex;
+    column-gap: 7px;
+    margin-left: auto;
+
+    @include vp-1023 {
+      flex-direction: column;
+      margin: 0;
+      margin-top: auto;
+      row-gap: 1px;
+      margin-bottom: 19px;
+
+      li:first-child {
+        order: 2;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    color: $color-default-white;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 400;
+
+    &--primiry {
+      overflow: hidden;
+
+      @include hover {
+        color: $color-jordy-blue;
+      }
+
+      &:active {
+        color: $color-jordy-blue;
+      }
+    }
+
+    @include hover {
+      .nav__icon {
+        fill: $color-curious-blue;
+      }
+    }
+
+    @include active {
+      .nav__icon {
+        fill: $color-curious-blue;
+
+        path {
+          fill: rgba($color-midnight-express-2, 30%);
+        }
+      }
+    }
+
+    @include vp-1023 {
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.43333;
+      color: $color-midnight-express-2;
+
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+
+      @include hover {
+        &>span {
+          color: $color-jordy-blue;
+        }
+      }
+    }
+  }
+
+  &__text {
+    display: none;
+
+    @include vp-1023 {
+      display: block;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.125;
+      text-transform: uppercase;
+      color: $color-midnight-express-2;
+      transition: color $trans-default;
+    }
+  }
+
+  &__icon {
+    fill: $color-jordy-blue;
+    transition: fill $trans-default;
+    display: block;
+
+    svg {
+      display: block;
+    }
+
+    path {
+      transition: fill $trans-default;
+    }
+
+    @include vp-1023 {
+      fill: $color-midnight-express-2;
+
+      svg {
+        width: 45px;
+
+        path {
+          fill: $color-default-white;
+        }
+      }
+    }
+  }
+}
+
+.burger {
+  display: none;
+
+  @include vp-1023 {
+    position: relative;
+    margin-left: auto;
+    display: block;
+    z-index: 1000;
+    cursor: pointer;
+
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+  }
+
+  @include vp-767 {
+    margin-right: -12.5px;
+    margin-top: 3px;
+  }
+
+  @include hover {
+
+    .burger__top-line,
+    .burger__bottom-line {
+      background-color: $color-jordy-blue;
+    }
+  }
+
+  &__top-line,
+  &__bottom-line {
+    width: 25px;
+    height: 3px;
+    border-radius: 2px;
+    background-color: $color-default-white;
+    transition: $trans-default;
+    position: absolute;
+    left: calc(50% - 12.5px);
+    top: calc(50% - 2px);
+  }
+
+  &__top-line {
+    transform: translateY(-4px);
+  }
+
+  &__bottom-line {
+    transform: translateY(4px);
+  }
+
+  &.is-open {
+    .burger__top-line {
+      transform: rotate(45deg);
+      background-color: $color-very-light-grey;
+    }
+
+    .burger__bottom-line {
+      transform: rotate(-45deg);
+      background-color: $color-very-light-grey;
+    }
+  }
+}
+
+.social {
+  display: none;
+
+  @include vp-1023 {
+    composes: list;
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 29px;
+
+  }
+
+  &__link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    transition: opacity $trans-default;
+
+    @include hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__icon svg{
+    display: block;
+    fill: transparent;
+  }
+}

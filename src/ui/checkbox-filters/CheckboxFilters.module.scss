@@ -1,0 +1,160 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.checkbox-filters {
+  display: flex;
+  align-items: baseline;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 400;
+  color: $color-default-black;
+  letter-spacing: 2px;
+  transition: opacity $trans-default, background-color $trans-default, color $trans-default;
+
+  @include vp-767 {
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+
+  @include hover {
+    opacity: 0.6;
+    outline: none;
+  }
+
+  & input:focus {
+    @include focus {
+      ~.checkbox-filters__custom-input {
+        outline: 1px solid $color-catalina-blue;
+      }
+    }
+  }
+
+  &--svg {
+    color: $color-catalina-blue;
+
+    & input:checked~.checkbox-filters__custom-input-svg {
+      color: $color-catalina-blue;
+    }
+
+    & input~.checkbox-filters__custom-input-svg {
+      color: $color-transparent-catalina-blue;
+    }
+
+    & input:focus {
+      @include focus {
+        ~.checkbox-filters__custom-input-svg {
+          outline: 1px solid $color-catalina-blue;
+        }
+      }
+    }
+  }
+
+
+  &__custom-input {
+    margin-right: 13px;
+    padding: 4px;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+    background-color: $color-default-white;
+    cursor: pointer;
+    transition: border-color $trans-default, background-color $trans-default;
+
+    @include vp-767 {
+      margin-right: 9px;
+      min-width: 18px;
+      width: 18px;
+      height: 18px;
+    }
+
+    @include hover {
+      outline: none;
+    }
+
+    @include active {
+      background-color: $color-solitude-dark;
+      outline: none;
+
+      &>.checkbox-filters__custom-check {
+        opacity: 0.4;
+      }
+    }
+  }
+
+  &__custom-input-svg {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-default-white;
+    border-radius: 50%;
+
+    @include hover-focus {
+      opacity: 0.6;
+    }
+
+    @include vp-767 {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &__custom-check {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    display: none;
+
+    @include vp-767 {
+      transform: translate(-7px, -8px);
+      width: 13px;
+      min-width: 13px;
+      height: 13px;
+
+      & svg {
+        width: 100%;
+      }
+    }
+  }
+
+  input:checked~.checkbox-filters__custom-input .checkbox-filters__custom-check {
+    display: block;
+  }
+
+  &__label {
+    letter-spacing: -0.1px;
+    word-break: break-all;
+
+    @include vp-767 {
+      text-transform: lowercase;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__svg{
+    @include vp-767 {
+      width: 17px;
+      height: 16px;
+      transform: translateY(-3px);
+
+      & svg {
+        width: 100%;
+      }
+    }
+  }
+}
